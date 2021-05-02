@@ -1,26 +1,11 @@
 import etcd
 
 client = etcd.Client() # this will create a client against etcd server running on localhost on port 4001
-client = etcd.Client(port=2379)
-client = etcd.Client(host='192.168.49.2', port=2379)
-client = etcd.Client(host='192.168.49.2', port=2379, allow_redirect=False) # wont let you run sensitive commands on non-leader machines, default is true
-client = etcd.Client(
-             host='192.168.49.2',
-             port=2379,
-             allow_reconnect=True,
-             protocol='https',)
-# client.read('/nodes/n2').value
-# #recursively read a directory
-# r = client.read('/nodes', recursive=True, sorted=True)
-# for child in r.children:
-#     print("%s: %s" % (child.key,child.value))
-
-# client.read('/nodes/n2', wait=True) #Waits for a change in value in the key before returning.
-# client.read('/nodes/n2', wait=True, waitIndex=10)
-
-# # raises etcd.EtcdKeyNotFound when key not found
-# try:
-#     client.read('/invalid/path')
-# except etcd.EtcdKeyNotFound:
-#     # do something
-#     print ("error")
+client = etcd.Client(port=4002)
+client = etcd.Client(host='127.0.0.1', port=4003)
+client = etcd.Client(host=(('127.0.0.1', 4001), ('127.0.0.1', 4002), ('127.0.0.1', 4003)))
+client = etcd.Client(host='127.0.0.1', port=4003, allow_redirect=False) # wont let you run sensitive commands on non-leader machines, default is true
+# If you have defined a SRV record for _etcd._tcp.example.com pointing to the clients
+client = etcd.Client(srv_domain='example.com', protocol="https")
+# create a client against https://api.example.com:443/etcd
+client = etcd.Client(host='api.example.com', protocol='https', port=443, version_prefix='/etcd')
