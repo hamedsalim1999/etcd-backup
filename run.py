@@ -9,18 +9,18 @@ client = etcd.Client(
              port=2379,
              allow_reconnect=True,
              protocol='https',)
-client.read('/nodes/n2').value
-#recursively read a directory
-r = client.read('/nodes', recursive=True, sorted=True)
-for child in r.children:
-    print("%s: %s" % (child.key,child.value))
+# client.read('/nodes/n2').value
+# #recursively read a directory
+# r = client.read('/nodes', recursive=True, sorted=True)
+# for child in r.children:
+#     print("%s: %s" % (child.key,child.value))
 
-client.read('/nodes/n2', wait=True) #Waits for a change in value in the key before returning.
-client.read('/nodes/n2', wait=True, waitIndex=10)
+# client.read('/nodes/n2', wait=True) #Waits for a change in value in the key before returning.
+# client.read('/nodes/n2', wait=True, waitIndex=10)
 
-# raises etcd.EtcdKeyNotFound when key not found
-try:
-    client.read('/invalid/path')
-except etcd.EtcdKeyNotFound:
-    # do something
-    print ("error")
+# # raises etcd.EtcdKeyNotFound when key not found
+# try:
+#     client.read('/invalid/path')
+# except etcd.EtcdKeyNotFound:
+#     # do something
+#     print ("error")
