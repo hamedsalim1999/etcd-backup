@@ -4,7 +4,6 @@ import os
 from fastapi import FastAPI
 etcd_ip = os.environ.get('ETCD_IP_ADDR')
 etcd_port =os.environ.get('ETCD_PORT')
-etcd_ip = int(etcd_ip)
 def get_data_from_etcd(etcd_port, etcd_ip):
     etcd = etcd3.client(etcd_port, etcd_ip)
     json_dic ={}
