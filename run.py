@@ -7,7 +7,8 @@ import os
 import sqlite3
 import boto3
 import logging
-
+from dotenv import load_dotenv
+load_dotenv()
 etcd_ip = os.getenv('ETCD_IP_ADDR')
 etcd_port =os.getenv('ETCD_PORT')
 env_endpoint_url = os.getenv('ENDPOINT_URL')
