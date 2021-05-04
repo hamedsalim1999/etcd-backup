@@ -13,8 +13,7 @@ etcd_port =os.environ.get('ETCD_PORT')
 env_endpoint_url = os.environ.get('ENDPOINT_URL')
 env_aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
 env_aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
-env_file_path= os.environ.get('FILE_PATH')
-env_object_name = os.environ.get('OBJECT_NAME')
+
 
 
 def backup_from_etcd(etcd_port, etcd_ip,file_name):
