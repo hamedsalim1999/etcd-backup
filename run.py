@@ -9,12 +9,12 @@ import boto3
 import logging
 from decouple import config
 
-etcd_ip = config("ETCD_IP_ADDR")
-etcd_port =config("ETCD_PORT")
-env_endpoint_url = config("ENDPOINT_URL")
-env_aws_access_key_id = config("AWS_ACCESS_KEY_ID")
-env_aws_secret_access_key = config("AWS_SECRET_ACCESS_KEY")
-env_bucket_name = config("BUCKET_NAME")
+etcd_ip = os.getenv("ETCD_IP_ADDR")
+etcd_port =os.getenv("ETCD_PORT")
+env_endpoint_url = os.getenv("ENDPOINT_URL")
+env_aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+env_aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+env_bucket_name = os.getenv("BUCKET_NAME")
 
 
 def backup_from_etcd(etcd_port, etcd_ip,file_name):
