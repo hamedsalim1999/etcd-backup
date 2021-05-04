@@ -60,7 +60,7 @@ def upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,env_
 
 datetime_name= datetime.now().strftime("%d. %B %Y %I:%M%p")
 backup_from_etcd(etcd_port,etcd_ip,datetime_name)
-upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.db",f"/{datetime_name}.db")
+upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.db",f"/{datetime_name}.db",env_bucket_name)
 upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.json",f"/{datetime_name}.json",env_bucket_name)
 # app = FastAPI()
 # @app.get('/')
