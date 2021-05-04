@@ -7,17 +7,13 @@ import os
 import sqlite3
 import boto3
 import logging
-from os.path import join, dirname
-from dotenv import load_dotenv
+from decouple import config
 
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
-
-etcd_ip = os.environ.get("ETCD_IP_ADDR")
-etcd_port =os.environ.get("ETCD_PORT")
-env_endpoint_url = os.environ.get("ENDPOINT_URL")
-env_aws_access_key_id = os.environ.get("AWS_ACCESS_KEY_ID")
-env_aws_secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
+etcd_ip = config("ETCD_IP_ADDR")
+etcd_port =config("ETCD_PORT")
+env_endpoint_url = config("ENDPOINT_URL")
+env_aws_access_key_id = config("AWS_ACCESS_KEY_ID")
+env_aws_secret_access_key = config("AWS_SECRET_ACCESS_KEY")
 
 
 
