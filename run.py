@@ -8,11 +8,11 @@ import sqlite3
 import boto3
 import logging
 
-etcd_ip = os.environ.get('ETCD_IP_ADDR')
-etcd_port =os.environ.get('ETCD_PORT')
-env_endpoint_url = os.environ.get('ENDPOINT_URL')
-env_aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
-env_aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+etcd_ip = os.getenv('ETCD_IP_ADDR')
+etcd_port =os.getenv('ETCD_PORT')
+env_endpoint_url = os.getenv('ENDPOINT_URL')
+env_aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+env_aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
 
 
