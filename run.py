@@ -13,11 +13,11 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-etcd_ip = os.environ.get('ETCD_IP_ADDR')
-etcd_port =os.environ.get('ETCD_PORT')
-env_endpoint_url = os.environ.get('ENDPOINT_URL')
-env_aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
-env_aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+etcd_ip = os.environ.get("ETCD_IP_ADDR")
+etcd_port =os.environ.get("ETCD_PORT")
+env_endpoint_url = os.environ.get("ENDPOINT_URL")
+env_aws_access_key_id = os.environ.get("AWS_ACCESS_KEY_ID")
+env_aws_secret_access_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 
 
