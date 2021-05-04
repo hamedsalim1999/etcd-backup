@@ -18,7 +18,7 @@ env_aws_secret_access_key = config("AWS_SECRET_ACCESS_KEY")
 
 
 def backup_from_etcd(etcd_port, etcd_ip,file_name):
-    etcd = etcd3.client(etcd_port, etcd_ip)
+    etcd = etcd3.client(etcd_ip,etcd_port)
     con = sqlite3.connect(f'{file_name}.db')
     cur = con.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS etcd (key TEXT, value TEXT)")
