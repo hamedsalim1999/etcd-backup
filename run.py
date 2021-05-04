@@ -14,7 +14,7 @@ etcd_port =config("ETCD_PORT")
 env_endpoint_url = config("ENDPOINT_URL")
 env_aws_access_key_id = config("AWS_ACCESS_KEY_ID")
 env_aws_secret_access_key = config("AWS_SECRET_ACCESS_KEY")
-
+env_bucket_name = config("BUCKET_NAME")
 
 
 def backup_from_etcd(etcd_port, etcd_ip,file_name):
@@ -28,7 +28,7 @@ def backup_from_etcd(etcd_port, etcd_ip,file_name):
         cur.execute("INSERT INTO etcd (key , value) VALUES (?, ?)",(metadata.key.decode('utf-8'),val.decode('utf-8')))
     with open(f'{file_name}.json', 'w') as json_file:
         json.dump(json_dic, json_file)
-def upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,env_file_path,env_object_name):
+def upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,env_file_path,env_object_name,bucket_name):
     logging.basicConfig(level=logging.INFO)
     try:
         s3_resource = boto3.resource(
@@ -42,7 +42,7 @@ def upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,env_
         logging.error(exc)
     else:
         try:
-            bucket = s3_resource.Bucket('etcd-backup')
+            bucket = s3_resource.Bucket(bucket_name)
             file_path = env_file_path
             object_name = env_object_name
             with open(file_path, "rb") as file:
@@ -58,7 +58,7 @@ def upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,env_
 datetime_name= datetime.now().strftime("%d. %B %Y %I:%M%p")
 backup_from_etcd(etcd_port,etcd_ip,datetime_name)
 upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.db",f"/{datetime_name}.db")
-upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.json",f"/{datetime_name}.json")
+upload(env_endpoint_url,env_aws_access_key_id,env_aws_secret_access_key,f"{datetime_name}.json",f"/{datetime_name}.json",env_bucket_name)
 # app = FastAPI()
 # @app.get('/')
 # async def send_data():
