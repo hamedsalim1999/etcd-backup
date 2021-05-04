@@ -8,7 +8,10 @@ import sqlite3
 import boto3
 import logging
 from decouple import config
-
+from dotenv import load_dotenv
+from os.path import join, dirname
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 etcd_ip = os.getenv("ETCD_IP_ADDR")
 etcd_port =os.getenv("ETCD_PORT")
 env_endpoint_url = os.getenv("ENDPOINT_URL")
