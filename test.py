@@ -9,3 +9,5 @@ class TestDb(unittest.TestCase):
         etcd_data_to_sql(self.obj,self.db)
         user = self.db.query.filter_by(value='val1')
         assert user is not None
+if __name__ == '__main__':
+    unittest.main()
