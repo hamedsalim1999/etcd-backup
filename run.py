@@ -84,7 +84,7 @@ datetime_name= datetime.now().strftime("%d. %B %Y %I:%M%p")
 
 sqlfile = sqlcon(datetime_name)
 
-etcd_data_to_sql(obj,datetime_name)
+etcd_data_to_sql(obj,sqlfile)
 
 etcd_data_to_json(obj,datetime_name)
 
