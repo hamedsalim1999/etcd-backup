@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+ru.sh
+.gitignore
+dockerrun.sh
+dockerrun.sh
+09. May 2021 10
+*.db
+*.json
