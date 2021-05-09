@@ -1,10 +1,10 @@
 import unittest
-from run import sqlcon, etcd_data_to_sql,etcd_data_to_json
+from run import sqlcon, etcd_data_to_sql,etcd_data_to_json,etcd_connect
 
 class TestDb(unittest.TestCase):
     def setUp(self):
         self.db = sqlcon('test')
-        self.obj = {'key1':'val1','key2':'val2','key3':'val3','key4':'val5'}.items()
+        self.obj = etcd_connect('127.0.0.1','2379')
     def test_etcd_data_to_sql(self):
         etcd_data_to_sql(self.obj,self.db)
         user = self.db.query.filter_by(value='val1')
