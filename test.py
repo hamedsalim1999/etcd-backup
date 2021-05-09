@@ -1,7 +1,9 @@
 import unittest
 from unittest.mock import Mock
 from run import sqlcon, etcd_data_to_sql,etcd_data_to_json,etcd_connect
-from colorama import Fore, Back, Style
+
+def prRed(skk): print("\033[91m {}\033[00m" .format(skk))
+def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
 class TestDb(unittest.TestCase):
     def setUp(self):
         self.db = sqlcon('test')
@@ -11,14 +13,14 @@ class TestDb(unittest.TestCase):
         try:
             etcd_data_to_sql(self.obj,self.db)
             self.db.execute("SELECT * from etcd")
-            print(Back.GREEN+"Test etcd_data_to_sql Successfully!")
+            prGreen(f"Test etcd_data_to_sql Successfully!")
         except:
-            print(Fore.RED +"Test etcd_data_to_sql FAIL")
+            prRed(f"Test etcd_data_to_sql FAIL")
     def test_etcd_data_to_json(self):
         try:
             etcd_data_to_json(self.obj,'data')
-            print(Back.GREEN+"Test test_etcd_data_to_json Successfully!")
+            prGreen("Test test_etcd_data_to_json Successfully!")
         except:
-            print(Fore.RED +"Test test_etcd_data_to_json FAIL")
+            prRed(f"Test test_etcd_data_to_json FAIL")
 if __name__ == '__main__':
     unittest.main()
